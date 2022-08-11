@@ -4,7 +4,7 @@
 #
 Name     : pypi-sentry_sdk
 Version  : 1.9.3
-Release  : 23
+Release  : 24
 URL      : https://files.pythonhosted.org/packages/b1/3a/ae27e446ad60173414977fb1d06d9d827f50fbddd1d22ee67915b42ee64f/sentry-sdk-1.9.3.tar.gz
 Source0  : https://files.pythonhosted.org/packages/b1/3a/ae27e446ad60173414977fb1d06d9d827f50fbddd1d22ee67915b42ee64f/sentry-sdk-1.9.3.tar.gz
 Summary  : Python client for Sentry (https://sentry.io)
