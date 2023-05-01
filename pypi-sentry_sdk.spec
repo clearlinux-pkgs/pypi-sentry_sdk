@@ -4,10 +4,10 @@
 # Using build pattern: distutils3
 #
 Name     : pypi-sentry_sdk
-Version  : 1.21.0
-Release  : 52
-URL      : https://files.pythonhosted.org/packages/97/fd/7088e40c54c8b8e18ca1a2bf935885ac68fb706562c0236948fb3473a545/sentry-sdk-1.21.0.tar.gz
-Source0  : https://files.pythonhosted.org/packages/97/fd/7088e40c54c8b8e18ca1a2bf935885ac68fb706562c0236948fb3473a545/sentry-sdk-1.21.0.tar.gz
+Version  : 1.21.1
+Release  : 53
+URL      : https://files.pythonhosted.org/packages/ce/da/9981b6f72cdd0383b14843930a4b8845f5bdf5098a1da04373f9cc8a6b95/sentry-sdk-1.21.1.tar.gz
+Source0  : https://files.pythonhosted.org/packages/ce/da/9981b6f72cdd0383b14843930a4b8845f5bdf5098a1da04373f9cc8a6b95/sentry-sdk-1.21.1.tar.gz
 Summary  : Python client for Sentry (https://sentry.io)
 Group    : Development/Tools
 License  : MIT
@@ -58,10 +58,10 @@ python3 components for the pypi-sentry_sdk package.
 
 
 %prep
-%setup -q -n sentry-sdk-1.21.0
-cd %{_builddir}/sentry-sdk-1.21.0
+%setup -q -n sentry-sdk-1.21.1
+cd %{_builddir}/sentry-sdk-1.21.1
 pushd ..
-cp -a sentry-sdk-1.21.0 buildavx2
+cp -a sentry-sdk-1.21.1 buildavx2
 popd
 
 %build
@@ -69,15 +69,15 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1682453627
+export SOURCE_DATE_EPOCH=1682974891
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
 export NM=gcc-nm
-export CFLAGS="$CFLAGS -O3 -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -flto=auto -g1 -gno-column-info -gno-variable-location-views -gz "
-export FCFLAGS="$FFLAGS -O3 -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -flto=auto -g1 -gno-column-info -gno-variable-location-views -gz "
-export FFLAGS="$FFLAGS -O3 -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -flto=auto -g1 -gno-column-info -gno-variable-location-views -gz "
-export CXXFLAGS="$CXXFLAGS -O3 -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -flto=auto -g1 -gno-column-info -gno-variable-location-views -gz "
+export CFLAGS="$CFLAGS -O3 -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -flto=auto -g1 -gno-column-info -gno-variable-location-views -gz=zstd "
+export FCFLAGS="$FFLAGS -O3 -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -flto=auto -g1 -gno-column-info -gno-variable-location-views -gz=zstd "
+export FFLAGS="$FFLAGS -O3 -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -flto=auto -g1 -gno-column-info -gno-variable-location-views -gz=zstd "
+export CXXFLAGS="$CXXFLAGS -O3 -fdebug-types-section -femit-struct-debug-baseonly -ffat-lto-objects -flto=auto -g1 -gno-column-info -gno-variable-location-views -gz=zstd "
 export MAKEFLAGS=%{?_smp_mflags}
 python3 setup.py build
 
