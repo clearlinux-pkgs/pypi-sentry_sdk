@@ -4,10 +4,10 @@
 # Using build pattern: distutils3
 #
 Name     : pypi-sentry_sdk
-Version  : 1.29.0
-Release  : 63
-URL      : https://files.pythonhosted.org/packages/84/70/5cb5e664edc83c2828d2a5c6a0bc77599e3e5b71de917f95ede495a8dc68/sentry-sdk-1.29.0.tar.gz
-Source0  : https://files.pythonhosted.org/packages/84/70/5cb5e664edc83c2828d2a5c6a0bc77599e3e5b71de917f95ede495a8dc68/sentry-sdk-1.29.0.tar.gz
+Version  : 1.29.1
+Release  : 64
+URL      : https://files.pythonhosted.org/packages/cd/2f/73f50e8749e0b813c0ce4ef4386c70386d2c75ae9e39abb3f1a5492ee270/sentry-sdk-1.29.1.tar.gz
+Source0  : https://files.pythonhosted.org/packages/cd/2f/73f50e8749e0b813c0ce4ef4386c70386d2c75ae9e39abb3f1a5492ee270/sentry-sdk-1.29.1.tar.gz
 Summary  : Python client for Sentry (https://sentry.io)
 Group    : Development/Tools
 License  : MIT
@@ -58,10 +58,10 @@ python3 components for the pypi-sentry_sdk package.
 
 
 %prep
-%setup -q -n sentry-sdk-1.29.0
-cd %{_builddir}/sentry-sdk-1.29.0
+%setup -q -n sentry-sdk-1.29.1
+cd %{_builddir}/sentry-sdk-1.29.1
 pushd ..
-cp -a sentry-sdk-1.29.0 buildavx2
+cp -a sentry-sdk-1.29.1 buildavx2
 popd
 
 %build
@@ -69,7 +69,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1690818285
+export SOURCE_DATE_EPOCH=1690902886
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
