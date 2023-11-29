@@ -1,5 +1,5 @@
 PKG_NAME := pypi-sentry_sdk
-URL = https://files.pythonhosted.org/packages/58/87/7ac94389533b3aae7802e3f5ac22eb5dd988ddace24fd4833b58d543b77a/sentry-sdk-1.37.1.tar.gz
+URL = https://files.pythonhosted.org/packages/41/41/2c0ba93b8e3a6243ea244f3e58c9c85f9bf34eee1d6ce4f233291bdd388e/sentry-sdk-1.38.0.tar.gz
 ARCHIVES = 
 
 include ../common/Makefile.common

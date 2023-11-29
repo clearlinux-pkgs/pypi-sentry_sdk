@@ -6,10 +6,10 @@
 # autospec commit: e661f3a
 #
 Name     : pypi-sentry_sdk
-Version  : 1.37.1
-Release  : 75
-URL      : https://files.pythonhosted.org/packages/58/87/7ac94389533b3aae7802e3f5ac22eb5dd988ddace24fd4833b58d543b77a/sentry-sdk-1.37.1.tar.gz
-Source0  : https://files.pythonhosted.org/packages/58/87/7ac94389533b3aae7802e3f5ac22eb5dd988ddace24fd4833b58d543b77a/sentry-sdk-1.37.1.tar.gz
+Version  : 1.38.0
+Release  : 76
+URL      : https://files.pythonhosted.org/packages/41/41/2c0ba93b8e3a6243ea244f3e58c9c85f9bf34eee1d6ce4f233291bdd388e/sentry-sdk-1.38.0.tar.gz
+Source0  : https://files.pythonhosted.org/packages/41/41/2c0ba93b8e3a6243ea244f3e58c9c85f9bf34eee1d6ce4f233291bdd388e/sentry-sdk-1.38.0.tar.gz
 Summary  : Python client for Sentry (https://sentry.io)
 Group    : Development/Tools
 License  : MIT
@@ -58,10 +58,10 @@ python3 components for the pypi-sentry_sdk package.
 
 
 %prep
-%setup -q -n sentry-sdk-1.37.1
-cd %{_builddir}/sentry-sdk-1.37.1
+%setup -q -n sentry-sdk-1.38.0
+cd %{_builddir}/sentry-sdk-1.38.0
 pushd ..
-cp -a sentry-sdk-1.37.1 buildavx2
+cp -a sentry-sdk-1.38.0 buildavx2
 popd
 
 %build
@@ -69,7 +69,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1701099413
+export SOURCE_DATE_EPOCH=1701289210
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
