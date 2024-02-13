@@ -6,10 +6,10 @@
 # autospec commit: da8b975
 #
 Name     : pypi-sentry_sdk
-Version  : 1.40.3
-Release  : 84
-URL      : https://files.pythonhosted.org/packages/f5/1b/90164221767767c4ab9e1d722a2961a8ff71d9cbb99fcee08973f6cf9442/sentry-sdk-1.40.3.tar.gz
-Source0  : https://files.pythonhosted.org/packages/f5/1b/90164221767767c4ab9e1d722a2961a8ff71d9cbb99fcee08973f6cf9442/sentry-sdk-1.40.3.tar.gz
+Version  : 1.40.4
+Release  : 85
+URL      : https://files.pythonhosted.org/packages/c2/8d/379e1a2ebcfb117f2feb0cdc1bfc89a0ac6d4a00710c81a3c7107480b197/sentry-sdk-1.40.4.tar.gz
+Source0  : https://files.pythonhosted.org/packages/c2/8d/379e1a2ebcfb117f2feb0cdc1bfc89a0ac6d4a00710c81a3c7107480b197/sentry-sdk-1.40.4.tar.gz
 Summary  : Python client for Sentry (https://sentry.io)
 Group    : Development/Tools
 License  : MIT
@@ -58,13 +58,10 @@ python3 components for the pypi-sentry_sdk package.
 
 
 %prep
-%setup -q -n sentry-sdk-1.40.3
-cd %{_builddir}/sentry-sdk-1.40.3
+%setup -q -n sentry-sdk-1.40.4
+cd %{_builddir}/sentry-sdk-1.40.4
 pushd ..
-cp -a sentry-sdk-1.40.3 buildavx2
-popd
-pushd ..
-cp -a sentry-sdk-1.40.3 buildapx
+cp -a sentry-sdk-1.40.4 buildavx2
 popd
 
 %build
@@ -72,7 +69,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1707499883
+export SOURCE_DATE_EPOCH=1707838957
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
@@ -94,16 +91,6 @@ CFLAGS="$CLEAR_INTERMEDIATE_CFLAGS -march=x86-64-v3 -Wl,-z,x86-64-v3 "
 CXXFLAGS="$CLEAR_INTERMEDIATE_CXXFLAGS -march=x86-64-v3 -Wl,-z,x86-64-v3 "
 FFLAGS="$CLEAR_INTERMEDIATE_FFLAGS -march=x86-64-v3 -Wl,-z,x86-64-v3 "
 FCFLAGS="$CLEAR_INTERMEDIATE_FCFLAGS -march=x86-64-v3 "
-LDFLAGS="$CLEAR_INTERMEDIATE_LDFLAGS -march=x86-64-v3 "
-python3 -m build --wheel --skip-dependency-check --no-isolation
-
-popd
-pushd ../buildapx/
-CC=gcc-14
-CFLAGS="$CLEAR_INTERMEDIATE_CFLAGS -march=x86-64-v3 -mapxf -mavx10.1 -Wl,-z,x86-64-v3 "
-CXXFLAGS="$CLEAR_INTERMEDIATE_CXXFLAGS -march=x86-64-v3 -Wl,-z,x86-64-v3 "
-FFLAGS="$CLEAR_INTERMEDIATE_FFLAGS -march=x86-64-v3 -mapxf -mavx10.1 -Wl,-z,x86-64-v3 "
-FCFLAGS="$CLEAR_INTERMEDIATE_FCFLAGS -march=x86-64-v3 -mapxf -mavx10.1 "
 LDFLAGS="$CLEAR_INTERMEDIATE_LDFLAGS -march=x86-64-v3 "
 python3 -m build --wheel --skip-dependency-check --no-isolation
 
@@ -140,17 +127,7 @@ FCFLAGS="$CLEAR_INTERMEDIATE_FCFLAGS -march=x86-64-v3 "
 LDFLAGS="$CLEAR_INTERMEDIATE_LDFLAGS -march=x86-64-v3 "
 python3 -m installer --destdir=%{buildroot}-v3 dist/*.whl
 popd
-pushd ../buildapx/
-CC=gcc-14
-CFLAGS="$CLEAR_INTERMEDIATE_CFLAGS -march=x86-64-v3 -mapxf -mavx10.1 -Wl,-z,x86-64-v3 "
-CXXFLAGS="$CLEAR_INTERMEDIATE_CXXFLAGS -march=x86-64-v3 -Wl,-z,x86-64-v3 "
-FFLAGS="$CLEAR_INTERMEDIATE_FFLAGS -march=x86-64-v3 -mapxf -mavx10.1 -Wl,-z,x86-64-v3 "
-FCFLAGS="$CLEAR_INTERMEDIATE_FCFLAGS -march=x86-64-v3 -mapxf -mavx10.1 "
-LDFLAGS="$CLEAR_INTERMEDIATE_LDFLAGS -march=x86-64-v3 "
-python3 -m installer --destdir=%{buildroot}-va dist/*.whl
-popd
 /usr/bin/elf-move.py avx2 %{buildroot}-v3 %{buildroot} %{buildroot}/usr/share/clear/filemap/filemap-%{name}
-/usr/bin/elf-move.py apx %{buildroot}-va %{buildroot} %{buildroot}/usr/share/clear/filemap/filemap-%{name}
 
 %files
 %defattr(-,root,root,-)
