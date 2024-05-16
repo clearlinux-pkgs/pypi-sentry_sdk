@@ -6,13 +6,14 @@
 # autospec commit: 5905be9
 #
 Name     : pypi-sentry_sdk
-Version  : 2.1.1
-Release  : 96
-URL      : https://files.pythonhosted.org/packages/76/81/3f0e14f35253c3d4fddb6e5ec190f654cd7fd2f19c23fbe0f6afd85b03b6/sentry_sdk-2.1.1.tar.gz
-Source0  : https://files.pythonhosted.org/packages/76/81/3f0e14f35253c3d4fddb6e5ec190f654cd7fd2f19c23fbe0f6afd85b03b6/sentry_sdk-2.1.1.tar.gz
+Version  : 2.2.0
+Release  : 97
+URL      : https://files.pythonhosted.org/packages/f9/38/bae56a390e73d158198fd0836c4b36b60afa78e161f05c007272d9b1b034/sentry_sdk-2.2.0.tar.gz
+Source0  : https://files.pythonhosted.org/packages/f9/38/bae56a390e73d158198fd0836c4b36b60afa78e161f05c007272d9b1b034/sentry_sdk-2.2.0.tar.gz
 Summary  : Python client for Sentry (https://sentry.io)
 Group    : Development/Tools
 License  : MIT
+Requires: pypi-sentry_sdk-license = %{version}-%{release}
 Requires: pypi-sentry_sdk-python = %{version}-%{release}
 Requires: pypi-sentry_sdk-python3 = %{version}-%{release}
 BuildRequires : buildreq-distutils3
@@ -26,6 +27,14 @@ BuildRequires : buildreq-distutils3
 <img src="https://sentry-brand.storage.googleapis.com/sentry-wordmark-dark-280x84.png" alt="Sentry" width="280" height="84">
 </a>
 </p>
+
+%package license
+Summary: license components for the pypi-sentry_sdk package.
+Group: Default
+
+%description license
+license components for the pypi-sentry_sdk package.
+
 
 %package python
 Summary: python components for the pypi-sentry_sdk package.
@@ -49,10 +58,10 @@ python3 components for the pypi-sentry_sdk package.
 
 
 %prep
-%setup -q -n sentry_sdk-2.1.1
-cd %{_builddir}/sentry_sdk-2.1.1
+%setup -q -n sentry_sdk-2.2.0
+cd %{_builddir}/sentry_sdk-2.2.0
 pushd ..
-cp -a sentry_sdk-2.1.1 buildavx2
+cp -a sentry_sdk-2.2.0 buildavx2
 popd
 
 %build
@@ -60,7 +69,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1715015946
+export SOURCE_DATE_EPOCH=1715874269
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
@@ -104,6 +113,8 @@ ASFLAGS="$CLEAR_INTERMEDIATE_ASFLAGS"
 LDFLAGS="$CLEAR_INTERMEDIATE_LDFLAGS"
 export MAKEFLAGS=%{?_smp_mflags}
 rm -rf %{buildroot}
+mkdir -p %{buildroot}/usr/share/package-licenses/pypi-sentry_sdk
+cp %{_builddir}/sentry_sdk-%{version}/LICENSE %{buildroot}/usr/share/package-licenses/pypi-sentry_sdk/e9f18e3f9c97cbb82d4d77262a9289e84acdbbc6 || :
 python3 -m installer --destdir=%{buildroot} dist/*.whl
 echo ----[ mark ]----
 cat %{buildroot}/usr/lib/python3*/site-packages/*/requires.txt || :
@@ -120,6 +131,10 @@ popd
 
 %files
 %defattr(-,root,root,-)
+
+%files license
+%defattr(0644,root,root,0755)
+/usr/share/package-licenses/pypi-sentry_sdk/e9f18e3f9c97cbb82d4d77262a9289e84acdbbc6
 
 %files python
 %defattr(-,root,root,-)
